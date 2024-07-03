@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="note-detail">
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.content }}</p>
+    <p class="text-muted">Создано: {{ note.created_at }}</p>
+    <a href="{% url 'note_edit' note.id %}" class="btn btn-outline-light rounded-pill">Изменить</a>
+    <form action="{% url 'note_delete' note.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger rounded-pill">Удалить</button>
+    </form>
+    <a href="/" class="btn btn-outline-light rounded-pill">Вернуться назад</a>
+</div>
+{% endblock %}

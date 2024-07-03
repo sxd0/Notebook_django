@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="text-center">Редактировать Заметку</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Заголовок</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ note.title }}" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Содержание</label>
+            <textarea class="form-control" id="content" name="content" rows="5" required>{{ note.content }}</textarea>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark rounded-pill">Сохранить</button>
+        </div>
+    </form>
+    <a href="/" class="btn btn-outline-light rounded-pill">Вернуться назад</a>
+</div>
+{% endblock %}

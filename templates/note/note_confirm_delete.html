@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center">Удалить заметку</h2>
+<div class="card note-card">
+    <div class="card-body">
+        <h5 class="card-title">{{ note.title }}</h5>
+        <p class="card-text">{{ note.content }}</p>
+        <p class="card-text"><small class="text-muted">Создано: {{ note.created_at }}</small></p>
+        <form action="{% url 'note_delete' note.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger rounded-pill">Удалить</button>
+            <a href="{% url 'note_list' %}" class="btn btn-outline-light rounded-pill">Отмена</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
